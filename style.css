@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+}
+
+main {
+    padding: 200px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.a2doMal {
+    display: none;
+}
+
+div {
+    max-width: 750px;
+    width: 100%;
+}
+
+div:last-child {
+    max-width: 400px;
+}
+
+div img {
+    width: 100%;
+}
