@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototipos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+        }
+
+        main {
+            padding: 200px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 2rem;
+        }
+
+        main button {
+            background: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 1rem;
+            margin-bottom: 5rem;
+        }
+
+        .cena {
+            position: relative;
+            width: min(100%, 685px);
+            aspect-ratio: 685 / 1522;
+            padding-bottom: 1rem;
+        }
+
+        .cena > img:first-child {
+            display: block;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .cena .gato {
+            position: absolute;
+            height: auto;
+        }
+
+        #gato1 {
+            left: 28%;
+            top: 39%;
+            width: 15%;
+        }
+
+        #gato2 {
+            left: 57%;
+            top: 48%;
+            width: 16%;
+        }
+
+        #gato3 {
+            left: 73%;
+            top: 37%;
+            width: 18%;
+        }
+
+        main > div:not(.cena) {
+            max-width: 750px;
+            width: 100%;
+        }
+
+        #final1, #final2 {
+            display: none;
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Protótipos</h1>
+        <div>
+            <button class="prev" onclick="window.location.href='../index.html'">anterior</button>
+            <button class="next" disabled>próximo</button>
+        </div>
+        <div class="cena">
+            <img src="../imgs/02/1.png" alt="">
+            <img src="../imgs/02/2.1.png" id="final1" alt="">
+            <img src="../imgs/02/2.2.png" id="final2" alt="">
+            <img src="../imgs/02/gato1.png" class="gato" id="gato1" alt="">
+            <img src="../imgs/02/gato2.png" class="gato" id="gato2" alt="">
+            <img src="../imgs/02/gato3.png" class="gato" id="gato3" alt="">
+        </div>
+    </main>
+    <script>
+    const gatos = document.querySelectorAll(".gato");
+    const inventario = [];
+    let executado = false;
+
+    gatos.forEach((gato) => {
+        gato.addEventListener("click", () => {
+            if (!executado) {
+                gato.style.display = "none";
+                inventario.push(gato);
+            }
+        });
+    });
+
+
+    window.addEventListener("scroll", () => {
+        let chegouAoFinal = null
+
+        if (window.innerWidth > 768) {
+            chegouAoFinal = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight-400;
+        } else {
+            chegouAoFinal = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight;
+        }
+
+        if (chegouAoFinal && !executado) {
+            executado = true;
+            
+            if (inventario.length === 3) {
+                final2.style.display = "block";
+            } else {
+                final1.style.display = "block";
+            }
+        }
+    });
+</script>
+</body>
+</html>

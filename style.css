@@ -13,19 +13,27 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
-.a2doMal {
-    display: none;
+h1 {
+    color: #fff;
+    font-size: 2rem;
+}
+
+main button {
+    background: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 1rem;
+    margin-bottom: 5rem;
 }
 
 div {
     max-width: 750px;
     width: 100%;
-}
-
-div:last-child {
-    max-width: 400px;
 }
 
 div img {
