@@ -85,6 +85,19 @@
             width: 100%;
             margin: 0 auto;
         }
+
+        .coletado {
+            position: absolute;
+            display: none;
+            width: 150px;
+            animation: gelatine 0.5s infinite;
+        }
+        @keyframes gelatine {
+            from, to { transform: scale(1, 1); }
+            25% { transform: scale(0.9, 1.1); }
+            50% { transform: scale(1.1, 0.9); }
+            75% { transform: scale(0.95, 1.05); }
+        }
     </style>
 </head>
 <body>
@@ -103,6 +116,7 @@
             <img src="../imgs/02/gato3.png" class="gato" id="gato3" alt="">
         </div>
     </main>
+    <img src="../imgs/02/coletado.png" class="coletado" alt="">
     <script>
     const gatos = document.querySelectorAll(".gato");
     const inventario = [];
@@ -111,8 +125,23 @@
     gatos.forEach((gato) => {
         gato.addEventListener("click", () => {
             if (!executado) {
+                const posicao = gato.getBoundingClientRect();
                 gato.style.display = "none";
                 inventario.push(gato);
+
+                const coletado = document.createElement("img");
+                coletado.classList.add("coletado");
+                coletado.src = "../imgs/02/coletado.png";
+                document.body.appendChild(coletado);
+                
+                coletado.style.display = "block";
+                coletado.style.left = `${(posicao.left + window.scrollX)-30}px`;
+                coletado.style.top = `${posicao.top + window.scrollY}px`;
+
+                
+                setTimeout(() => {
+                    coletado.style.display = "none";
+                }, 1000);
             }
         });
     });
