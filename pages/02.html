@@ -90,8 +90,15 @@
             position: absolute;
             display: none;
             width: 150px;
-            animation: gelatine 0.5s infinite;
+            animation: gelatine 0.5s infinite, fadeColetado 1s ease forwards;
         }
+
+        @keyframes fadeColetado {
+            0% { opacity: 0; }
+            20%, 80% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
         @keyframes gelatine {
             from, to { transform: scale(1, 1); }
             25% { transform: scale(0.9, 1.1); }
@@ -133,11 +140,10 @@
                 coletado.classList.add("coletado");
                 coletado.src = "../imgs/02/coletado.png";
                 document.body.appendChild(coletado);
-                
+
                 coletado.style.display = "block";
                 coletado.style.left = `${(posicao.left + window.scrollX)-30}px`;
                 coletado.style.top = `${posicao.top + window.scrollY}px`;
-
                 
                 setTimeout(() => {
                     coletado.style.display = "none";
