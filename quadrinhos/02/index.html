@@ -124,6 +124,39 @@
     <script>
     const gatos = document.querySelectorAll(".gato");
     const inventario = [];
+    
+    const miau = new Audio("miado.mp3");
+    miau.preload = 'auto';
+    miau.volume = 0.7;
+    miau.loop = false;
+
+    const eba = new Audio("eba.mp3");
+    eba.preload = 'auto';
+    eba.volume = 0.7;
+    eba.loop = false;
+    
+    const medo = new Audio("medo.mp3");
+    medo.preload = 'auto';
+    medo.volume = 0.7;
+    medo.loop = false;
+
+    document.addEventListener("pointerdown", () => {
+        [eba, medo].forEach((audio) => {
+            audio.muted = true;
+            const reproducao = audio.play();
+
+            if (reproducao) {
+                reproducao.then(() => {
+                    audio.pause();
+                    audio.currentTime = 0;
+                    audio.muted = false;
+                }).catch(() => {
+                    audio.muted = false;
+                });
+            }
+        });
+    }, { once: true });
+
     let executado = false;
 
     gatos.forEach((gato) => {
@@ -131,6 +164,8 @@
             if (!executado) {
                 const posicao = gato.getBoundingClientRect();
                 gato.style.display = "none";
+                miau.play();
+                miau.currentTime = 0;
                 inventario.push(gato);
 
                 const coletado = document.createElement("img");
@@ -164,8 +199,12 @@
             
             if (inventario.length === 3) {
                 final2.style.display = "block";
+                eba.currentTime = 0;
+                eba.play().catch(() => {});
             } else {
                 final1.style.display = "block";
+                medo.currentTime = 0;
+                medo.play().catch(() => {});
             }
         }
     });
