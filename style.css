@@ -6,6 +6,16 @@
 
 body {
     background: #000;
+    text-align: center;
+}
+
+.voltar {
+    background: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 3rem;
 }
 
 main {

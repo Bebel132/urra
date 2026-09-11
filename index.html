@@ -6,87 +6,73 @@
     <link rel="stylesheet" href="style.css">
     <title>Prototipos</title>
     <style>
-        .a2doMal {
-            display: none;
+        h1 {
+            margin-bottom: 3rem;
         }
         
-        div:last-child {
-            max-width: 400px;
+        #prototipos {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: grid;
         }
 
-        #aviso {
-            position: fixed;
-            left: 50%;
-            width: 300px;
-            margin-left: -150px;
-            bottom: 0;
-            z-index: 9999;
-            animation: shake 2s ease infinite, fadeAviso 1s ease forwards;
+        .imagem {
+            height: 200px;
+            width: 200px;
+            border-radius: 10px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #fff;
+            margin: 1rem auto;
         }
 
-        @keyframes fadeAviso {
-            0% { opacity: 0; }
-            20%, 80% { opacity: 1; }
-            100% { opacity: 0; }
+        span {
+            color: #fff;
         }
-
-        @keyframes shake {
-            0%, 100% {transform: translateX(0);}
-            10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
-            20%, 40%, 60%, 80% {transform: translateX(10px);}
-        }
-
     </style>
 </head>
 <body>
     <main>
         <h1>Protótipos</h1>
-        <div>
-            <button class="prev" disabled>anterior</button>
-            <button class="next" onClick="window.location.href='./pages/02.html'">próximo</button>
-        </div>
-        <div class="a1">
-            <img src="imgs/01/1.jpeg" alt="">
-        </div>
-        <div class="a2">
-            <img src="imgs/01/2.png" alt="">
-        </div>
-        <div class="a2doMal">
-            <img src="imgs/01/2 do mal.png" alt="">
-        </div>
-        <div class="3">
-            <img src="imgs/01/3.png" alt="">
-        </div>
-        <div class="4">
-            <img src="imgs/01/4.png" alt="">
+        <div id="prototipos">
         </div>
     </main>
     <script>
-        let executado = false;
+        const lista = [
+            {
+                titulo: "Zé gordin",
+                imagem: "quadrinhos/01/imgs/banner.png",
+                url: "quadrinhos/01/"
+            },
+            {
+                titulo: "Restage os gatos!",
+                imagem: "quadrinhos/02/imgs/gato2.png",
+                url: "quadrinhos/02/"
+            },
+        ]
 
-        window.addEventListener("scroll", () => {
-            let chegouAoFinal = 0;
-            if (window.innerWidth > 768) {
-                 chegouAoFinal = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 200;
-            } else {
-                chegouAoFinal = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 400;
-            }
+        const prototipos = document.querySelector("#prototipos");
 
-            if (chegouAoFinal && !executado) {
-                executado = true;
-
-                document.querySelector(".a2").style.display = "none";
-                document.querySelector(".a2doMal").style.display = "block";
-
-                const aviso = document.createElement("img");
-                aviso.src = "imgs/01/aviso.png";
-                aviso.id = "aviso";
-                document.body.appendChild(aviso);
-
-                setTimeout(() => {
-                    aviso.style.display = "none";
-                }, 1000);
-            }
+        lista.forEach((item) => {
+            const div = document.createElement("div");
+            div.style.cursor = "pointer";
+            div.classList.add("prototipo");
+            
+            const img = document.createElement("div");
+            img.classList.add("imagem");
+            img.style.backgroundImage = `url(${item.imagem})`;
+            
+            const span = document.createElement("span");
+            span.textContent = item.titulo;
+            
+            
+            div.appendChild(img);
+            div.appendChild(span);
+            prototipos.appendChild(div);
+            
+            div.addEventListener("click", () => {
+                window.location.href = item.url;
+            });
         });
     </script>
 </body>

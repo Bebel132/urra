@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css">
     <title>Prototipos</title>
     <style>
         * {
@@ -108,22 +109,18 @@
     </style>
 </head>
 <body>
+    <button class="voltar" onclick="window.location.href='../../index.html'">Voltar</button>
     <main>
-        <h1>Protótipos</h1>
-        <div>
-            <button class="prev" onclick="window.location.href='../index.html'">anterior</button>
-            <button class="next" disabled>próximo</button>
-        </div>
         <div class="cena">
-            <img src="../imgs/02/1.png" alt="">
-            <img src="../imgs/02/2.1.png" id="final1" alt="">
-            <img src="../imgs/02/2.2.png" id="final2" alt="">
-            <img src="../imgs/02/gato1.png" class="gato" id="gato1" alt="">
-            <img src="../imgs/02/gato2.png" class="gato" id="gato2" alt="">
-            <img src="../imgs/02/gato3.png" class="gato" id="gato3" alt="">
+            <img src="imgs/1.png" alt="">
+            <img src="imgs/2.1.png" id="final1" alt="">
+            <img src="imgs/2.2.png" id="final2" alt="">
+            <img src="imgs/gato1.png" class="gato" id="gato1" alt="">
+            <img src="imgs/gato2.png" class="gato" id="gato2" alt="">
+            <img src="imgs/gato3.png" class="gato" id="gato3" alt="">
         </div>
     </main>
-    <img src="../imgs/02/coletado.png" class="coletado" alt="">
+    <img src="imgs/coletado.png" class="coletado" alt="">
     <script>
     const gatos = document.querySelectorAll(".gato");
     const inventario = [];
@@ -138,7 +135,7 @@
 
                 const coletado = document.createElement("img");
                 coletado.classList.add("coletado");
-                coletado.src = "../imgs/02/coletado.png";
+                coletado.src = "imgs/coletado.png";
                 document.body.appendChild(coletado);
 
                 coletado.style.display = "block";
