@@ -156,7 +156,7 @@
         if (window.innerWidth > 768) {
             chegouAoFinal = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight-400;
         } else {
-            chegouAoFinal = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight;
+            chegouAoFinal = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight-100;
         }
 
         if (chegouAoFinal && !executado) {
