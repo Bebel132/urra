@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css">
+    <title>Prototipos</title>
+    <style>
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        main {
+            padding: 200px 0;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            aspect-ratio: auto;
+            position: relative;
+            height: 3400px;
+        }
+
+        #img02 {
+            position: sticky;
+            top: 10%;
+        }
+
+        #img03 {
+            display: none;
+            top: 10%;
+            position: sticky;
+        }
+
+        #braco {
+            position: fixed;
+            bottom: 47%;
+            right: 42%;
+            width: min(40vw, 570px);
+            max-width: calc(100vw - 2rem);
+            transform-origin: top left;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button class="voltar" onclick="window.location.href='../../index.html'">Voltar</button>
+    <main>
+        <img src="imgs/01.png" alt="">
+        <img src="imgs/02.png" id="img02" alt="">
+        <img src="imgs/03.png" id="img03" alt="">
+    </main>
+    <img src="imgs/braco.png" id="braco" alt="">
+    <script>
+        const braco = document.querySelector("#braco");
+        const img02 = document.querySelector("#img02");
+        const img03 = document.querySelector("#img03");
+        const anguloInicial = 270;
+        const velocidade = 0.2;
+        const limiteScroll = 1791;
+        let inicio = 0;
+
+        function definirInicio() {
+            inicio = img02.getBoundingClientRect().top + window.scrollY;
+            atualizarBraco();
+        }
+
+        function atualizarBraco() {
+            const scroll = window.scrollY;
+            const antesDoInicio = scroll < inicio;
+            const chegouAoFinal = scroll >= limiteScroll;
+
+            if (antesDoInicio) {
+                braco.style.display = "none";
+                img02.style.display = "block";
+                img03.style.display = "none";
+                return;
+            }
+
+            braco.style.display = "block";
+
+            if (chegouAoFinal) {
+                const anguloFinal = anguloInicial + (limiteScroll - inicio) * velocidade;
+                braco.style.transform = `rotate(${anguloFinal}deg)`;
+                img02.style.display = "none";
+                img03.style.display = "block";
+                return;
+            }
+
+            const graus = anguloInicial + (scroll - inicio) * velocidade;
+            braco.style.transform = `rotate(${graus}deg)`;
+            img02.style.display = "block";
+            img03.style.display = "none";
+        }
+
+        window.addEventListener("scroll", atualizarBraco);
+        window.addEventListener("load", definirInicio);
+        definirInicio();
+    </script>
+</body>
+</html>
