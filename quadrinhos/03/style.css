@@ -1,0 +1,62 @@
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+main {
+    padding: 200px 0;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    aspect-ratio: 1/1;
+    position: relative;
+    height: 3400px;
+}
+
+@media screen and (max-width: 1276px) {
+    main {
+        height: 4000px;
+    }
+}
+
+#img02 {
+    position: sticky;
+    top: 10%;
+}
+
+#img03 {
+    display: none;
+    top: 10%;
+    position: sticky;
+}
+
+#braco {
+    bottom: 50%;
+    right: 40%;
+    width: min(40vw, 629px);
+    max-width: calc(100vw - 2rem);
+    transform-origin: top left;
+    display: none;
+    position: fixed;
+}
+
+#flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+}
+
+.tipo-pequeno {
+    max-width: 543px;
+    width: 100%;
+}
+
+.tipo-largo {
+    max-width: 718px;
+    width: 100%;
+}
