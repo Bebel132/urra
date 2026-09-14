@@ -41,4 +41,5 @@ function atualizarBraco() {
 
 window.addEventListener("scroll", atualizarBraco);
 window.addEventListener("load", definirInicio);
+window.addEventListener("resize", definirInicio);
 definirInicio();
