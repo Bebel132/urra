@@ -9,15 +9,13 @@ main {
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-    aspect-ratio: 1/1;
     position: relative;
-    height: 3400px;
 }
 
-@media screen and (max-width: 1276px) {
-    main {
-        height: 4000px;
-    }
+#cena-sticky {
+    width: 100%;
+    min-height: 2600px;
+    position: relative;
 }
 
 #img02 {
@@ -32,7 +30,7 @@ main {
 }
 
 #braco {
-    bottom: 50%;
+    bottom: 48%;
     right: 40%;
     width: min(40vw, 629px);
     max-width: calc(100vw - 2rem);
@@ -59,4 +57,16 @@ main {
 .tipo-largo {
     max-width: 718px;
     width: 100%;
+}
+
+#img04 {
+    max-width: 600px;
+    width: 100%;
+    margin: 2rem auto 0;
+}
+
+@media screen and (max-width: 1276px) {
+    #cena-sticky {
+        min-height: 3000px;
+    }
 }
