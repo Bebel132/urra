@@ -1,0 +1,182 @@
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+main {
+    padding: 200px 0;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#cena-sticky {
+    position: relative;
+}
+
+#img02,
+#baam,
+#img03 {
+    position: sticky;
+}
+
+#img03, 
+#baam {
+    display: none;
+}
+
+#baam {
+    z-index: 999;
+    width: 300px;
+    margin: 0 auto;
+    top: 27%;
+    animation: horizontal-shaking 0.5s, infinite fade 1s ease forwards;
+}
+
+@keyframes horizontal-shaking {
+ 0% { transform: translateX(0) }
+ 25% { transform: translateX(5px) }
+ 50% { transform: translateX(-5px) }
+ 75% { transform: translateX(5px) }
+ 100% { transform: translateX(0) }
+}
+
+@keyframes fade {
+    0% { opacity: 0; }
+    20%, 80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+#braco {
+    transform-origin: top left;
+    display: none;
+    position: fixed;
+}
+
+#flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+}
+
+.tipo-pequeno {
+    width: 543px;
+}
+
+.tipo-largo {
+    width: 718px;
+}
+
+#img04 {
+    max-width: 600px;
+    width: 100%;
+    margin: 2rem auto 0;
+    padding: 0 1rem;
+}
+
+/* 1401px ou mais */
+@media screen and (min-width: 1401px) {
+    #cena-sticky {
+        width: 1400px;
+        min-height: 2600px;
+    }
+
+    #braco {
+        bottom: 48%;
+        right: 40%;
+        width: 629px;
+    }
+
+    #img02,
+    #img03 {
+        top: 10%;
+    }
+}
+
+/* até 1401px */
+@media screen and (max-width: 1401px) {
+    #cena-sticky {
+        width: 1200px;
+        min-height: 2700px;
+    }
+
+    #braco {
+        bottom: 53%;
+        right: 40%;
+        width: 512px;
+    }
+
+    #img02,
+    #img03 {
+        top: 15%;
+    }
+}
+
+/* até 1276px */
+@media screen and (max-width: 1276px) {
+    #cena-sticky {
+        width: 718px;
+        min-height: 2450px;
+    }
+
+    #img02,
+    #img03 {
+        top: 28%;
+    }
+
+    #braco {
+        bottom: 48%;
+        right: 43%;
+        width: 310px;
+    }
+}
+
+/* até 992px */
+@media screen and (max-width: 992px) {
+    #braco {
+        bottom: 49%;
+        right: 42%;
+        width: 300px;
+    }
+}
+
+/* até 777px */
+@media screen and (max-width: 777px) {
+    .tipo-largo {
+        width: 545px;
+    }
+
+    .tipo-pequeno {
+        width: 410px;
+    }
+
+    #cena-sticky {
+        width: 545px;
+        min-height: 2450px;
+    }
+
+    #img02,
+    #img03 {
+        top: 28%;
+    }
+
+    #braco {
+        bottom: 54%;
+        right: 42%;
+        width: 233px;
+    }
+}
+
+/* até 575px */
+@media screen and (max-width: 575px) {
+    #braco {
+        right: 40%;
+        width: 235px;
+    }
+}
