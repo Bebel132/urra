@@ -26,10 +26,10 @@ main div {
 }
 
 #gato2 {
-    right: clamp(64px, 10vw, 157px);
-    bottom: clamp(89px, 14vh, 230px);
+    right: clamp(64px, 10vw, 122px);
+    bottom: clamp(89px, 19vh, 230px);
     position: absolute;
-    width: clamp(136px, 10vw, 230px);
+    width: clamp(136px, 14vw, 259px);
     animation: gelatine 0.5s infinite;
 }
 
