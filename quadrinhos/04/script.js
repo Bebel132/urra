@@ -23,6 +23,7 @@ const clickEvent = () => {
         top: gato.parentElement.parentElement.children[2].offsetTop + 50,
         behavior: "smooth"
     });
+    miau.play();
     quadros_final_ruim.forEach(e => e.style.display = "none");
     quadros_final_bom.forEach(e => e.style.display = "block");
 }

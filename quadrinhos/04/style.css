@@ -27,7 +27,7 @@ main div {
 
 #gato2 {
     right: clamp(64px, 10vw, 157px);
-    bottom: clamp(89px, 10vh, 230px);
+    bottom: clamp(89px, 14vh, 230px);
     position: absolute;
     width: clamp(136px, 10vw, 230px);
     animation: gelatine 0.5s infinite;
@@ -41,10 +41,10 @@ main div {
 }
 
 #gato3 {
-    right: clamp(77px, 10vw, 157px);
-    bottom: clamp(89px, 10vh, 230px);
+    right: clamp(77px, 10vw, 140px);
+    bottom: clamp(89px, 14vh, 230px);
     position: absolute;
-    width: clamp(123px, 10vw, 230px);
+    width: clamp(123px, 12vw, 230px);
     animation: angry 0.5s infinite;
 }
 
