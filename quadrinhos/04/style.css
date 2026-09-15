@@ -1,0 +1,61 @@
+main {
+    max-width: 750px;
+    margin: 0 auto;
+    scroll-behavior: smooth;
+}
+
+img {
+    width: 100%;
+    padding: 2rem 1rem;
+}
+
+main div {
+    position: relative;
+}
+
+.gato {
+    right: clamp(77px, 10vw, 157px);
+    bottom: clamp(89px, 25vh, 230px);
+    position: absolute;
+    width: clamp(123px, 12vw, 226px);
+    cursor: pointer;
+}
+
+#gato1_2 {
+    display: none;
+}
+
+#gato2 {
+    right: clamp(64px, 10vw, 157px);
+    bottom: clamp(89px, 10vh, 230px);
+    position: absolute;
+    width: clamp(136px, 10vw, 230px);
+    animation: gelatine 0.5s infinite;
+}
+
+@keyframes gelatine {
+    from, to { transform: scale(1, 1); }
+    25% { transform: scale(0.9, 1.1); }
+    50% { transform: scale(1.1, 0.9); }
+    75% { transform: scale(0.95, 1.05); }
+}
+
+#gato3 {
+    right: clamp(77px, 10vw, 157px);
+    bottom: clamp(89px, 10vh, 230px);
+    position: absolute;
+    width: clamp(123px, 10vw, 230px);
+    animation: angry 0.5s infinite;
+}
+
+@keyframes angry {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    20% { transform: translateX(-7px) rotate(-3deg); }
+    40% { transform: translateX(7px) rotate(3deg); }
+    60% { transform: translateX(-5px) rotate(-2deg); }
+    80% { transform: translateX(5px) rotate(2deg); }
+}
+
+.caminho_bom {
+    display: none;
+}
