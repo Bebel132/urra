@@ -10,14 +10,42 @@ body{
     justify-content: center;
     align-items: center;
     background-color: black;
+    padding: 3rem 1rem;
 }
 
 img{
-    padding: 0 2.5%;
     max-width: 690px;
     width: 100%;
 }
 
 .ocultDay{
     display: none;
+}
+
+.cena {
+    position: relative;
+    width: min(100%, 690px);
+    aspect-ratio: 685 / 4096;
+}
+
+.cena img {
+    position: absolute;
+}
+
+.cena img:first-child {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+.tropeco {
+    width: 33%;
+    top: 52%;
+    left: 14%;
+}
+
+.chocalho {
+    width: 40.9%;
+    top: 53.8%;
+    left: 50%;
 }
