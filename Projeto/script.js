@@ -1,17 +1,16 @@
 let chegouAoFinal = false;
+let comicDestravada = false;
+let coletável = 0;
 
 window.addEventListener("scroll", () => {
-    // if (window.innerWidth > 768) {
-    //     chegouAoFinal = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 200;
-    // } else {
-    //     chegouAoFinal = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 300;
-    // }
+
+    console.log(window.scrollY);
 
     if(!chegouAoFinal){
     chegouAoFinal = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight * 0.85;
     }
 
-    if(chegouAoFinal){
+    if(chegouAoFinal && comicDestravada){
 
         document.querySelectorAll(".patrão").forEach(x => {
             x.style.display = "none";
@@ -23,3 +22,31 @@ window.addEventListener("scroll", () => {
 
     }
 })
+
+document.querySelectorAll(".coletável").forEach(x => {
+            x.addEventListener("click", (e) => {
+                x.style.display = "none";
+                coletável += 1;
+
+                if(coletável>=3){
+                    comicDestravada = true;
+                    chegouAoFinal = false
+                }
+
+                if(comicDestravada){
+                    
+                    document.querySelectorAll(".locked").forEach(x => {
+                        x.style.display = "none";
+                    })
+                    
+                    
+                    document.querySelectorAll(".unlocked").forEach(x => {
+                        x.style.display = "block";
+                    })
+
+                    document.querySelectorAll(".patrão").forEach(x => {
+                        x.style.display = "block";
+                    })
+                }
+            });
+        })

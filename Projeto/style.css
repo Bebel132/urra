@@ -13,11 +13,51 @@ body{
 }
 
 img{
-    padding: 0 2.5%;
-    max-width: 690px;
-    width: 100%;
+    display: block;
 }
 
-.ocultDay{
+img.comic{
+    margin: auto;
+    max-width: 690px;
+    width: 100%;
+    height: auto;
+}
+
+.ocultDay,
+.unlocked,
+.patrão{
     display: none;
+}
+
+.cena{
+    position:relative;
+    width: fit-content;
+    max-width: 100%;
+}
+
+#item1{
+    position: absolute;
+    aspect-ratio: 1 / 1;
+    width: 20%;
+    height: auto;
+    left: 12.5%;
+    top: 72%;
+}
+
+#item2{
+    position: absolute;
+    aspect-ratio: 1 / 1;
+    width: 8%;
+    height: auto;
+    left: 10%;
+    top: 66.5%;
+}
+
+#item3{
+    position: absolute;
+    aspect-ratio: 1 / 1;
+    width: 30%;
+    height: auto;
+    left: 70%;
+    top: 68%;
 }
