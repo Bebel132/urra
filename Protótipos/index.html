@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Prototipos</title>
+    <style>
+        h1 {
+            margin-bottom: 3rem;
+        }
+        
+        #prototipos {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: grid;
+        }
+
+        .imagem {
+            height: 200px;
+            width: 200px;
+            border-radius: 10px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #fff;
+            margin: 1rem auto;
+        }
+
+        span {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Protótipos</h1>
+        <div id="prototipos">
+        </div>
+    </main>
+    <script>
+        const lista = [
+            {
+                titulo: "Zé gordin",
+                imagem: "quadrinhos/01/imgs/banner.png",
+                url: "quadrinhos/01/"
+            },
+            {
+                titulo: "Resgate os gatos!",
+                imagem: "quadrinhos/02/imgs/gato2.png",
+                url: "quadrinhos/02/"
+            },
+            {
+                titulo: "Acorda, Zé!",
+                imagem: "quadrinhos/03/imgs/banner.png",
+                url: "quadrinhos/03/"
+            },
+            {
+                titulo: "Quero carinho!",
+                imagem: "quadrinhos/04/imgs/gato.png",
+                url: "quadrinhos/04/"
+            }
+        ]
+
+        const prototipos = document.querySelector("#prototipos");
+
+        lista.forEach((item) => {
+            const div = document.createElement("div");
+            div.style.cursor = "pointer";
+            div.classList.add("prototipo");
+            
+            const img = document.createElement("div");
+            img.classList.add("imagem");
+            img.style.backgroundImage = `url(${item.imagem})`;
+            
+            const span = document.createElement("span");
+            span.textContent = item.titulo;
+            
+            
+            div.appendChild(img);
+            div.appendChild(span);
+            prototipos.appendChild(div);
+            
+            div.addEventListener("click", () => {
+                window.location.href = item.url;
+            });
+        });
+    </script>
+</body>
+</html>
