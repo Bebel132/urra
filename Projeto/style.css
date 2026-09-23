@@ -10,6 +10,7 @@ body{
     justify-content: center;
     align-items: center;
     background-color: black;
+    padding: 3rem 1rem;
 }
 
 img{
@@ -33,6 +34,7 @@ img.comic{
     position:relative;
     width: fit-content;
     max-width: 100%;
+    aspect-ratio: 685 / 4096;
 }
 
 #item1{
@@ -60,4 +62,18 @@ img.comic{
     height: auto;
     left: 70%;
     top: 68%;
+}
+
+#tropeco{
+    position: absolute;
+    width: 33%;
+    top: 48.0%;
+    left: 17%;
+}
+
+#chocalho{
+    position: absolute;
+    width: 40.9%;
+    top: 49.5%;
+    left: 50%;
 }

@@ -1,13 +1,27 @@
 let chegouAoFinal = false;
 let comicDestravada = false;
+let iniciaAnimacaoPagina3 = false;
 let coletável = 0;
 
 window.addEventListener("scroll", () => {
-
-    console.log(window.scrollY);
+    if(
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight * 0.83
+        && !iniciaAnimacaoPagina3
+    ){
+        iniciaAnimacaoPagina3 = true;
+        const chocalhos = document.querySelectorAll(".chocalho");
+        
+        chocalhos[0].style.display = "none";
+        
+        setTimeout(() => {
+            chocalhos[0].style.display = "block";
+            chocalhos[1].style.display = "none";
+        }, 1800)
+        chocalhos[1].style.display = "block";
+    }
 
     if(!chegouAoFinal){
-    chegouAoFinal = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight * 0.85;
+        chegouAoFinal = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight * 0.95;
     }
 
     if(chegouAoFinal && comicDestravada){
