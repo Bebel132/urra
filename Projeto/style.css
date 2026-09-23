@@ -25,8 +25,7 @@ img.comic{
 }
 
 .ocultDay,
-.unlocked,
-.patrão{
+.unlocked{
     display: none;
 }
 
@@ -37,42 +36,41 @@ img.comic{
     aspect-ratio: 685 / 4096;
 }
 
-#item1{
+.elemento{
     position: absolute;
-    aspect-ratio: 1 / 1;
-    width: 20%;
-    height: auto;
-    left: 12.5%;
-    top: 72%;
 }
 
-#item2{
-    position: absolute;
+#Gas{
     aspect-ratio: 1 / 1;
-    width: 8%;
+    width: 40%;
     height: auto;
-    left: 10%;
-    top: 66.5%;
+    left: 57.3%;
+    top: 67.65%;
 }
 
-#item3{
-    position: absolute;
+#Lanterna{
     aspect-ratio: 1 / 1;
-    width: 30%;
+    width: 22.5%;
     height: auto;
-    left: 70%;
-    top: 68%;
+    left: 12%;
+    top: 68.0%;
+}
+
+#Mapa{
+    aspect-ratio: 1 / 1;
+    width: 17.5%;
+    height: auto;
+    left: 28%;
+    top: 70.75%;
 }
 
 .tropeco{
-    position: absolute;
     width: 33%;
     top: 52%;
     left: 15.5%;
 }
 
 .chocalho{
-    position: absolute;
     width: 41.7%;
     top: 53.7%;
     left: 49.5%;

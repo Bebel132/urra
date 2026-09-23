@@ -1,7 +1,7 @@
 let chegouAoFinal = false;
 let comicDestravada = false;
 let iniciaAnimacaoPagina3 = false;
-let coletável = 0;
+let coletavel = 0;
 
 window.addEventListener("scroll", () => {
     if(comicDestravada){
@@ -15,7 +15,7 @@ window.addEventListener("scroll", () => {
             chocalhos[0].style.display = "none";
             setTimeout(() => {
                 chocalhos[0].style.display = "block";
-                chocalhos[1].style.display = "none";
+                chocalhos[2].style.display = "none";
             }, 2300);
         }
     
@@ -25,7 +25,7 @@ window.addEventListener("scroll", () => {
     
         if(chegouAoFinal && comicDestravada){
     
-            document.querySelectorAll(".patrão").forEach(x => {
+            document.querySelectorAll(".patrao").forEach(x => {
                 x.style.display = "none";
             }) 
     
@@ -36,12 +36,15 @@ window.addEventListener("scroll", () => {
     }
 })
 
-document.querySelectorAll(".coletável").forEach(x => {
+document.querySelectorAll(".coletavel").forEach(x => {
     x.addEventListener("click", (e) => {
-        x.style.display = "none";
-        coletável += 1;
 
-        if(coletável>=3){
+
+
+        x.style.display = "none";
+        coletavel += 1;
+
+        if(coletavel>=3){
             comicDestravada = true;
         }
 
