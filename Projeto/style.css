@@ -64,16 +64,16 @@ img.comic{
     top: 68%;
 }
 
-#tropeco{
+.tropeco{
     position: absolute;
     width: 33%;
-    top: 48.0%;
-    left: 17%;
+    top: 52%;
+    left: 15.5%;
 }
 
-#chocalho{
+.chocalho{
     position: absolute;
-    width: 40.9%;
-    top: 49.5%;
-    left: 50%;
+    width: 41.7%;
+    top: 53.7%;
+    left: 49.5%;
 }
