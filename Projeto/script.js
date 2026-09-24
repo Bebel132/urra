@@ -5,6 +5,7 @@ let iniciaAnimacaoPagina3 = false;
 let jumpscareFeito = false;
 let coletavel = 0;
 let chegouAoJumpscare = false;
+let monstroOculto =true;
 
 function prevenirScroll(e) {
     e.preventDefault();
@@ -135,6 +136,14 @@ document.querySelectorAll(".coletavel").forEach((x) => {
         }
     });
 });
+
+document.querySelectorAll(".oculto").forEach((x) => {
+    x.addEventListener("click", (y) => {
+        document.querySelectorAll(".oculto").forEach((z) => {
+            z.style.display = "none";
+        })
+    }
+)})
 
 
 document.querySelector("#botao-menu").addEventListener("click", () => {
