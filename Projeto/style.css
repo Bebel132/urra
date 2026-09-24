@@ -25,7 +25,8 @@ img.comic {
 }
 
 .ocultDay,
-.unlocked {
+.unlocked,
+.buttonLocked {
     display: none;
 }
 
@@ -38,30 +39,6 @@ img.comic {
 
 .elemento {
     position: absolute;
-}
-
-#Gas {
-    aspect-ratio: 1 / 1;
-    width: 40%;
-    height: auto;
-    left: 57.3%;
-    top: 67.65%;
-}
-
-#Lanterna {
-    aspect-ratio: 1 / 1;
-    width: 22.5%;
-    height: auto;
-    left: 12%;
-    top: 68%;
-}
-
-#Mapa {
-    aspect-ratio: 1 / 1;
-    width: 17.5%;
-    height: auto;
-    left: 28%;
-    top: 70.75%;
 }
 
 .tropeco {
@@ -98,11 +75,35 @@ img.comic {
     position: absolute;
     width: 100px;
     height: 40px;
-    right: 2.5%;
-    top: 3.5%;
+    right: 0.5%;
+    top: 40px;
     background-color: transparent;
     border: none;
     cursor: pointer;
     color: #fff;
     transition: .2s;
+}
+
+#Gas {
+    aspect-ratio: 1 / 1;
+    width: 40%;
+    height: auto;
+    left: 57.3%;
+    top: 67.65%;
+}
+
+#Lanterna {
+    aspect-ratio: 1 / 1;
+    width: 22.5%;
+    height: auto;
+    left: 12%;
+    top: 68%;
+}
+
+#Mapa {
+    aspect-ratio: 1 / 1;
+    width: 17.5%;
+    height: auto;
+    left: 28%;
+    top: 70.75%;
 }
