@@ -79,10 +79,10 @@ window.addEventListener("scroll", () => {
                 document.documentElement.scrollHeight * 0.85;
         }
 
-        if (!chegouAoJumpscare && comicDestravada){
+        if (!chegouAoJumpscare && comicDestravada && chegouAoFinal){
             chegouAoJumpscare =
                 window.innerHeight + window.scrollY <=
-                document.documentElement.scrollHeight * 0.415;
+                document.documentElement.scrollHeight * 0.55;
         }
 
         if (chegouAoFinal && comicDestravada) {
@@ -90,6 +90,9 @@ window.addEventListener("scroll", () => {
             if(chegouAoJumpscare && !jumpscareFeito){
             jumpscareFeito = true;
             bloquearScroll();
+            setTimeout(() => {
+                desbloquearScroll();
+            }, 5000);
             }
 
             document.querySelectorAll(".patrao").forEach((x) => {
@@ -104,9 +107,6 @@ window.addEventListener("scroll", () => {
                 x.style.display = "block";
             });
 
-            setTimeout(() => {
-                desbloquearScroll();
-            }, 2500);
         }
     }
 });
