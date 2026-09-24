@@ -38,6 +38,10 @@ img.comic {
     aspect-ratio: 685 / 4096;
 }
 
+.patrao{
+    display: block;
+}
+
 .elemento {
     position: absolute;
 }

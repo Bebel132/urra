@@ -2,6 +2,7 @@ let chegouAoFinal = false;
 let chegouNaSelecao = false;
 let comicDestravada = false;
 let iniciaAnimacaoPagina3 = false;
+let jumpscareFeito = false;
 let coletavel = 0;
 const ambiente = new Audio('Projeto/sounds/trilha_sonora.wav');
 ambiente.loop = true;
@@ -29,8 +30,34 @@ function unlockAudio() {
 document.addEventListener('pointerdown', unlockAudio, { once: false });
 document.addEventListener('keydown', unlockAudio);
 window.addEventListener('scroll', unlockAudio, { passive: true });
+let chegouAoJumpscare = false;
+let monstroOculto = true;
+
+function prevenirScroll(e) {
+    e.preventDefault();
+}
+
+const teclasDeScroll = ["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "];
+function prevenirScrollTeclado(e) {
+    if (teclasDeScroll.includes(e.key)) e.preventDefault();
+}
+
+function bloquearScroll() {
+    window.addEventListener("wheel", prevenirScroll, { passive: false });
+    window.addEventListener("touchmove", prevenirScroll, { passive: false });
+    window.addEventListener("keydown", prevenirScrollTeclado);
+}
+
+function desbloquearScroll() {
+    window.removeEventListener("wheel", prevenirScroll);
+    window.removeEventListener("touchmove", prevenirScroll);
+    window.removeEventListener("keydown", prevenirScrollTeclado);
+}
 
 window.addEventListener("scroll", () => {
+    console.log("chegou ao final?:", chegouAoFinal);
+    console.log("chegou ao jumpscare?:", chegouAoJumpscare);
+    console.log("jumpscare Feito?:", jumpscareFeito);
 
     if (!chegouNaSelecao) {
         chegouNaSelecao =
@@ -81,10 +108,25 @@ window.addEventListener("scroll", () => {
         if (!chegouAoFinal) {
             chegouAoFinal =
                 window.innerHeight + window.scrollY >=
-                document.documentElement.scrollHeight * 0.95;
+                document.documentElement.scrollHeight * 0.85;
+        }
+
+        if (!chegouAoJumpscare && comicDestravada && chegouAoFinal) {
+            chegouAoJumpscare =
+                window.innerHeight + window.scrollY <=
+                document.documentElement.scrollHeight * 0.55;
         }
 
         if (chegouAoFinal && comicDestravada) {
+
+            if (chegouAoJumpscare && !jumpscareFeito) {
+                jumpscareFeito = true;
+                bloquearScroll();
+                setTimeout(() => {
+                    desbloquearScroll();
+                }, 5000);
+            }
+
             if (!somFinalTocado && audioLiberado) {
                 somFinalTocado = true;
                 const f = somFinal.cloneNode();
@@ -98,6 +140,11 @@ window.addEventListener("scroll", () => {
             document.querySelectorAll(".ocultDay").forEach((x) => {
                 x.style.display = "block";
             });
+
+            document.querySelectorAll(".monstro").forEach((x) => {
+                x.style.display = "block";
+            });
+
         }
     }
 });
@@ -130,6 +177,15 @@ document.querySelectorAll(".coletavel").forEach((x) => {
         }
     });
 });
+
+document.querySelectorAll(".oculto").forEach((x) => {
+    x.addEventListener("click", (y) => {
+        document.querySelectorAll(".oculto").forEach((z) => {
+            z.style.display = "none";
+        })
+    }
+    )
+})
 
 
 document.querySelector("#botao-menu").addEventListener("click", () => {
