@@ -105,7 +105,9 @@ window.addEventListener("scroll", () => {
             });
 
             document.querySelectorAll(".monstro").forEach((x) => {
+                if(monstroOculto){
                 x.style.display = "block";
+                }
             });
 
         }
@@ -139,9 +141,13 @@ document.querySelectorAll(".coletavel").forEach((x) => {
 
 document.querySelectorAll(".oculto").forEach((x) => {
     x.addEventListener("click", (y) => {
+
+        if(monstroOculto){
         document.querySelectorAll(".oculto").forEach((z) => {
             z.style.display = "none";
-        })
+            monstroOculto = false;
+            })
+        }
     }
 )})
 
