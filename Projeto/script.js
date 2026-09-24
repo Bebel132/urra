@@ -62,3 +62,12 @@ document.querySelectorAll(".coletavel").forEach((x) => {
         }
     });
 });
+
+
+document.querySelector("#botao-menu").addEventListener("click", () => {
+    document.querySelector("#botao-prototipos").classList.toggle("unlocked");
+});
+
+document.querySelector("#botao-prototipos").addEventListener("click", () => {
+    window.location.href = "Prototipos/index.html";
+});

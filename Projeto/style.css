@@ -75,3 +75,34 @@ img.comic {
     top: 53.7%;
     left: 49.5%;
 }
+
+#botao-menu {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 0.5%;
+    top: 0.5%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fff;   
+    transition: .2s;
+}
+
+#botao-menu:hover, #botao-prototipos:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+#botao-prototipos {
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    right: 2.5%;
+    top: 3.5%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    transition: .2s;
+}
