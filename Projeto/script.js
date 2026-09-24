@@ -2,17 +2,41 @@ let chegouAoFinal = false;
 let chegouNaSelecao = false;
 let comicDestravada = false;
 let iniciaAnimacaoPagina3 = false;
+let jumpscareFeito = false;
 let coletavel = 0;
+
+const ALTURA_JUMPSCARE_PERCENT = 0.495;
+
+function prevenirScroll(e) {
+    e.preventDefault();
+}
+
+const teclasDeScroll = ["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "];
+function prevenirScrollTeclado(e) {
+    if (teclasDeScroll.includes(e.key)) e.preventDefault();
+}
+
+function bloquearScroll() {
+    window.addEventListener("wheel", prevenirScroll, { passive: false });
+    window.addEventListener("touchmove", prevenirScroll, { passive: false });
+    window.addEventListener("keydown", prevenirScrollTeclado);
+}
+
+function desbloquearScroll() {
+    window.removeEventListener("wheel", prevenirScroll);
+    window.removeEventListener("touchmove", prevenirScroll);
+    window.removeEventListener("keydown", prevenirScrollTeclado);
+}
 
 window.addEventListener("scroll", () => {
 
-    if(!chegouNaSelecao){
-            chegouNaSelecao =
-                window.innerHeight + window.scrollY >=
-                document.documentElement.scrollHeight * 0.90;
+    if (!chegouNaSelecao) {
+        chegouNaSelecao =
+            window.innerHeight + window.scrollY >=
+            document.documentElement.scrollHeight * 0.90;
     }
 
-    if (chegouNaSelecao){
+    if (chegouNaSelecao) {
         document.querySelectorAll(".coletavel").forEach((x) => {
             x.classList.add("bordaColetavel");
         })
@@ -29,20 +53,20 @@ window.addEventListener("scroll", () => {
             const estaveis = document.querySelectorAll(".chocalhoEstavel")
 
             chocalhos.forEach((x) => {
-            x.style.display = "block";
+                x.style.display = "block";
             })
 
             estaveis.forEach((x) => {
-            x.style.display = "none";
+                x.style.display = "none";
             })
 
             setTimeout(() => {
                 chocalhos.forEach((x) => {
-                x.style.display = "none";
+                    x.style.display = "none";
                 })
 
                 estaveis.forEach((x) => {
-                x.style.display = "block";
+                    x.style.display = "block";
                 })
             }, 2300);
         }
@@ -50,10 +74,13 @@ window.addEventListener("scroll", () => {
         if (!chegouAoFinal) {
             chegouAoFinal =
                 window.innerHeight + window.scrollY >=
-                document.documentElement.scrollHeight * 0.95;
+                document.documentElement.scrollHeight * ALTURA_JUMPSCARE_PERCENT;
         }
 
-        if (chegouAoFinal && comicDestravada) {
+        if (chegouAoFinal && comicDestravada && !jumpscareFeito) {
+            jumpscareFeito = true;
+            bloquearScroll();
+
             document.querySelectorAll(".patrao").forEach((x) => {
                 x.style.display = "none";
             });
@@ -61,6 +88,14 @@ window.addEventListener("scroll", () => {
             document.querySelectorAll(".ocultDay").forEach((x) => {
                 x.style.display = "block";
             });
+
+            document.querySelectorAll(".monstro").forEach((x) => {
+                x.style.display = "block";
+            });
+
+            setTimeout(() => {
+                desbloquearScroll();
+            }, 2500);
         }
     }
 });
