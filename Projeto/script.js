@@ -1,9 +1,23 @@
 let chegouAoFinal = false;
+let chegouNaSelecao = false;
 let comicDestravada = false;
 let iniciaAnimacaoPagina3 = false;
 let coletavel = 0;
 
 window.addEventListener("scroll", () => {
+
+    if(!chegouNaSelecao){
+            chegouNaSelecao =
+                window.innerHeight + window.scrollY >=
+                document.documentElement.scrollHeight * 0.90;
+    }
+
+    if (chegouNaSelecao){
+        document.querySelectorAll(".coletavel").forEach((x) => {
+            x.classList.add("bordaColetavel");
+        })
+    }
+
     if (comicDestravada) {
         if (
             window.innerHeight + window.scrollY >=
@@ -12,11 +26,24 @@ window.addEventListener("scroll", () => {
         ) {
             iniciaAnimacaoPagina3 = true;
             const chocalhos = document.querySelectorAll(".chocalho");
+            const estaveis = document.querySelectorAll(".chocalhoEstavel")
 
-            chocalhos[0].style.display = "none";
+            chocalhos.forEach((x) => {
+            x.style.display = "block";
+            })
+
+            estaveis.forEach((x) => {
+            x.style.display = "none";
+            })
+
             setTimeout(() => {
-                chocalhos[0].style.display = "block";
-                chocalhos[2].style.display = "none";
+                chocalhos.forEach((x) => {
+                x.style.display = "none";
+                })
+
+                estaveis.forEach((x) => {
+                x.style.display = "block";
+                })
             }, 2300);
         }
 

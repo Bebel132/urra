@@ -26,7 +26,8 @@ img.comic {
 
 .ocultDay,
 .unlocked,
-.buttonLocked {
+.buttonLocked,
+.chocalho {
     display: none;
 }
 
@@ -47,14 +48,12 @@ img.comic {
     left: 15.5%;
 }
 
-.chocalho {
-    width: 41.7%;
-    top: 53.7%;
-    left: 49.5%;
+.bordaColetavel{
+    filter: drop-shadow(0px 0px 10px rgba(255,255,255, 0.6))
 }
 
 #botao-menu {
-    position: absolute;
+    position: fixed;
     width: 40px;
     height: 40px;
     right: 0.5%;
@@ -72,7 +71,7 @@ img.comic {
 }
 
 #botao-prototipos {
-    position: absolute;
+    position: fixed;
     width: 100px;
     height: 40px;
     right: 0.5%;
@@ -106,4 +105,8 @@ img.comic {
     height: auto;
     left: 28%;
     top: 70.75%;
+}
+
+#maquinaAgricola{
+    transition: width 1s ease-in-out;
 }
