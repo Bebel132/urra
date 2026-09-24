@@ -20,16 +20,36 @@ somFinal.preload = 'auto';
 somFinal.volume = 0.6;
 let somFinalTocado = false;
 
+const overlayInicio = document.querySelector("#overlay-inicio");
+const btnIniciar = document.querySelector("#btn-iniciar");
+
+function esconderOverlayInicio() {
+    overlayInicio?.classList.add("oculto");
+    document.body.classList.remove("travado-inicio");
+    desbloquearScroll();
+}
+
 function unlockAudio() {
     if (audioLiberado) return;
-    audioLiberado = true;
-    ambiente.play().catch(() => { audioLiberado = false; })
-
+    ambiente.play().then(() => {
+        audioLiberado = true;
+        esconderOverlayInicio();
+    }).catch(() => { });
 }
 
 document.addEventListener('pointerdown', unlockAudio, { once: false });
 document.addEventListener('keydown', unlockAudio);
 window.addEventListener('scroll', unlockAudio, { passive: true });
+
+bloquearScroll();
+document.body.classList.add("travado-inicio");
+btnIniciar?.addEventListener("click", () => {
+    ambiente.play().then(() => {
+        audioLiberado = true;
+    }).catch(() => { }).finally(() => {
+        esconderOverlayInicio();
+    });
+});
 let chegouAoJumpscare = false;
 let monstroOculto = true;
 
@@ -106,9 +126,11 @@ window.addEventListener("scroll", () => {
         }
 
         if (!chegouAoFinal) {
+            const porcent = window.innerWidth < 800 ? 0.98 : 0.95
+            console.log(porcent)
             chegouAoFinal =
                 window.innerHeight + window.scrollY >=
-                document.documentElement.scrollHeight * 0.85;
+                document.documentElement.scrollHeight * porcent;
         }
 
         if (!chegouAoJumpscare && comicDestravada && chegouAoFinal) {

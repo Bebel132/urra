@@ -115,3 +115,56 @@ img.comic {
 #maquinaAgricola {
     transition: width 1s ease-in-out;
 }
+
+#overlay-inicio {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+#overlay-inicio.oculto {
+    display: none;
+}
+
+.overlay-conteudo {
+    text-align: center;
+    color: #fff;
+    font-family: sans-serif;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.overlay-conteudo h1 {
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+}
+
+.overlay-conteudo p {
+    opacity: 0.8;
+}
+
+#btn-iniciar {
+    padding: 0.9rem 1.4rem;
+    font-size: 1rem;
+    background: #fff;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#btn-iniciar:hover {
+    opacity: 0.85;
+}
+
+body.travado-inicio {
+    overflow: hidden;
+}
