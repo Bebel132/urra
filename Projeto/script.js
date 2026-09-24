@@ -126,9 +126,11 @@ window.addEventListener("scroll", () => {
         }
 
         if (!chegouAoFinal) {
+            const porcent = window.innerWidth < 800 ? 0.98 : 0.95
+            console.log(porcent)
             chegouAoFinal =
                 window.innerHeight + window.scrollY >=
-                document.documentElement.scrollHeight * 0.85;
+                document.documentElement.scrollHeight * porcent;
         }
 
         if (!chegouAoJumpscare && comicDestravada && chegouAoFinal) {
