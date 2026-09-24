@@ -48,8 +48,8 @@ img.comic {
     left: 15.5%;
 }
 
-.bordaColetavel{
-    filter: drop-shadow(0px 0px 10px rgba(255,255,255, 0.6))
+.bordaColetavel {
+    filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.6))
 }
 
 #botao-menu {
@@ -58,14 +58,15 @@ img.comic {
     height: 40px;
     right: 0.5%;
     top: 0.5%;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.5);
     border: none;
     cursor: pointer;
-    color: #fff;   
+    color: #fff;
     transition: .2s;
 }
 
-#botao-menu:hover, #botao-prototipos:hover {
+#botao-menu:hover,
+#botao-prototipos:hover {
     background-color: #fff;
     color: #000;
 }
@@ -75,8 +76,8 @@ img.comic {
     width: 100px;
     height: 40px;
     right: 0.5%;
-    top: 40px;
-    background-color: transparent;
+    top: 45px;
+    background-color: rgba(0, 0, 0, 0.5);
     border: none;
     cursor: pointer;
     color: #fff;
@@ -107,6 +108,6 @@ img.comic {
     top: 70.75%;
 }
 
-#maquinaAgricola{
+#maquinaAgricola {
     transition: width 1s ease-in-out;
 }
