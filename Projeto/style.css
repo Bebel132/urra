@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,11 +13,11 @@ body{
     padding: 3rem 1rem;
 }
 
-img{
+img {
     display: block;
 }
 
-img.comic{
+img.comic {
     margin: auto;
     max-width: 690px;
     width: 100%;
@@ -25,22 +25,22 @@ img.comic{
 }
 
 .ocultDay,
-.unlocked{
+.unlocked {
     display: none;
 }
 
-.cena{
-    position:relative;
+.cena {
+    position: relative;
     width: fit-content;
     max-width: 100%;
     aspect-ratio: 685 / 4096;
 }
 
-.elemento{
+.elemento {
     position: absolute;
 }
 
-#Gas{
+#Gas {
     aspect-ratio: 1 / 1;
     width: 40%;
     height: auto;
@@ -48,15 +48,15 @@ img.comic{
     top: 67.65%;
 }
 
-#Lanterna{
+#Lanterna {
     aspect-ratio: 1 / 1;
     width: 22.5%;
     height: auto;
     left: 12%;
-    top: 68.0%;
+    top: 68%;
 }
 
-#Mapa{
+#Mapa {
     aspect-ratio: 1 / 1;
     width: 17.5%;
     height: auto;
@@ -64,13 +64,13 @@ img.comic{
     top: 70.75%;
 }
 
-.tropeco{
+.tropeco {
     width: 33%;
     top: 52%;
     left: 15.5%;
 }
 
-.chocalho{
+.chocalho {
     width: 41.7%;
     top: 53.7%;
     left: 49.5%;
