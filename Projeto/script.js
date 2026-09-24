@@ -4,8 +4,7 @@ let comicDestravada = false;
 let iniciaAnimacaoPagina3 = false;
 let jumpscareFeito = false;
 let coletavel = 0;
-
-const ALTURA_JUMPSCARE_PERCENT = 0.495;
+let chegouAoJumpscare = false;
 
 function prevenirScroll(e) {
     e.preventDefault();
@@ -29,6 +28,9 @@ function desbloquearScroll() {
 }
 
 window.addEventListener("scroll", () => {
+    console.log("chegou ao final?:",chegouAoFinal);
+    console.log("chegou ao jumpscare?:",chegouAoJumpscare);
+    console.log("jumpscare Feito?:",jumpscareFeito);
 
     if (!chegouNaSelecao) {
         chegouNaSelecao =
@@ -74,12 +76,21 @@ window.addEventListener("scroll", () => {
         if (!chegouAoFinal) {
             chegouAoFinal =
                 window.innerHeight + window.scrollY >=
-                document.documentElement.scrollHeight * ALTURA_JUMPSCARE_PERCENT;
+                document.documentElement.scrollHeight * 0.85;
         }
 
-        if (chegouAoFinal && comicDestravada && !jumpscareFeito) {
+        if (!chegouAoJumpscare && comicDestravada){
+            chegouAoJumpscare =
+                window.innerHeight + window.scrollY <=
+                document.documentElement.scrollHeight * 0.415;
+        }
+
+        if (chegouAoFinal && comicDestravada) {
+
+            if(chegouAoJumpscare && !jumpscareFeito){
             jumpscareFeito = true;
             bloquearScroll();
+            }
 
             document.querySelectorAll(".patrao").forEach((x) => {
                 x.style.display = "none";
