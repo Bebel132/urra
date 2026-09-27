@@ -116,7 +116,7 @@ window.addEventListener("scroll", () => {
     if (coletavel == 3) { 
         //Parte do código responsável por localizar se a comic deve ou não ser transformada em terror
         if (!comicTerror) {
-            comicTerror = posicaoLeitor >= 0.9;
+            comicTerror = posicaoLeitor >= 0.95;
         }
 
         //Parte que efetivamente transforma a comic em terror
@@ -152,35 +152,24 @@ window.addEventListener("scroll", () => {
         //Esse conjunto realiza a animação de chocalho da página 3 (está com erro)
         if (
             window.innerHeight + window.scrollY >=
-                document.documentElement.scrollHeight * 0.83 &&
+                document.documentElement.scrollHeight * 0.85 &&
             !iniciaAnimacaoPagina3
         ) {
             iniciaAnimacaoPagina3 = true;
-            if (audioLiberado) {
-                const s = alavanca.cloneNode();
-                s.volume = 0.5;
-                s.play().catch(() => {});
-            }
-            const chocalhos = document.querySelectorAll(".chocalho");
-            const estaveis = document.querySelectorAll(".chocalhoEstavel");
+            
+            const tropeco = document.querySelector("#tropeco");
+            const chocalha = document.querySelector("#chocalha");
+            const batida = document.querySelector("#batida");
 
-            chocalhos.forEach((x) => {
-                x.style.display = "block";
-            });
-
-            estaveis.forEach((x) => {
-                x.style.display = "none";
-            });
+            tropeco.style.animation = "tropeco 2s ease-in-out 1";
 
             setTimeout(() => {
-                chocalhos.forEach((x) => {
-                    x.style.display = "none";
-                });
+                chocalha.style.animation = "chocalhar .5s ease-in-out 5";
+            }, 2500);
 
-                estaveis.forEach((x) => {
-                    x.style.display = "block";
-                });
-            }, 2300);
+            setTimeout(() => {
+                batida.style.animation = "batida .5s ease-in-out 5";
+            }, 5000);
         }
     }
 });
