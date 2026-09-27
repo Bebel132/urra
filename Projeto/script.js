@@ -1,24 +1,45 @@
+//Essas são as variáveis que vão definir a localização do leitor
+
+let posicaoLeitor = 0;                      //calcula a posição do leitor
+
 let chegouAoFinal = false;
 let chegouNaSelecao = false;
 let comicDestravada = false;
 let iniciaAnimacaoPagina3 = false;
 let jumpscareFeito = false;
-let coletavel = 0;
+let coletavel = 0;                          //conta a quantidade de coletáveis adquiridos
+
+
+
+
+
+//Essas são as variáveis que definem os efeitos sonoros
+
 const ambiente = new Audio('Projeto/sounds/trilha_sonora.wav');
 ambiente.loop = true;
 ambiente.preload = 'auto';
 ambiente.volume = 0.3;
-let audioLiberado = false;
+
 const itemColetado = new Audio('Projeto/sounds/coleta_itens.wav');
 itemColetado.preload = 'auto';
 itemColetado.volume = 0.3;
+
 const alavanca = new Audio('Projeto/sounds/Alavanca.wav');
 alavanca.preload = 'auto';
 alavanca.volume = 0.5;
+
 const somFinal = new Audio('Projeto/sounds/cute_deer_sound_UWU.wav');
 somFinal.preload = 'auto';
 somFinal.volume = 0.6;
+
 let somFinalTocado = false;
+let audioLiberado = false;
+
+
+
+
+
+//
 
 const overlayInicio = document.querySelector("#overlay-inicio");
 const btnIniciar = document.querySelector("#btn-iniciar");
@@ -75,9 +96,13 @@ function desbloquearScroll() {
 }
 
 window.addEventListener("scroll", () => {
-    console.log("chegou ao final?:", chegouAoFinal);
-    console.log("chegou ao jumpscare?:", chegouAoJumpscare);
-    console.log("jumpscare Feito?:", jumpscareFeito);
+
+    posicaoLeitor = (window.innerHeight + window.scrollY) / document.documentElement.scrollHeight;
+
+    console.log(posicaoLeitor);
+
+
+
 
     if (!chegouNaSelecao) {
         chegouNaSelecao =
@@ -126,11 +151,9 @@ window.addEventListener("scroll", () => {
         }
 
         if (!chegouAoFinal) {
-            const porcent = window.innerWidth < 800 ? 0.98 : 0.95
-            console.log(porcent)
             chegouAoFinal =
                 window.innerHeight + window.scrollY >=
-                document.documentElement.scrollHeight * porcent;
+                document.documentElement.scrollHeight * 0.9;
         }
 
         if (!chegouAoJumpscare && comicDestravada && chegouAoFinal) {
