@@ -13,24 +13,6 @@ body {
     padding: 3rem 1rem;
 }
 
-img {
-    display: block;
-}
-
-img.comic {
-    margin: auto;
-    max-width: 690px;
-    width: 100%;
-    height: auto;
-}
-
-.ocultDay,
-.unlocked,
-.buttonLocked,
-.chocalho {
-    display: none;
-}
-
 .cena {
     position: relative;
     width: fit-content;
@@ -38,18 +20,25 @@ img.comic {
     aspect-ratio: 685 / 4096;
 }
 
-.patrao{
+img {
     display: block;
+}
+
+img.fundo {
+    margin: auto;
+    max-width: 690px;
+    width: 100%;
+    height: auto;
 }
 
 .elemento {
     position: absolute;
 }
 
-.tropeco {
-    width: 33%;
-    top: 52%;
-    left: 15.5%;
+.terror,
+.padrao,
+.desbloqueado {
+    display: none;
 }
 
 .bordaColetavel {

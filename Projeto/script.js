@@ -1,9 +1,19 @@
-let chegouAoFinal = false;
-let chegouNaSelecao = false;
-let comicDestravada = false;
+//Essas são as variáveis que vão definir a localização do leitor
+
+let posicaoLeitor = 0;                      //calcula a posição do leitor
+
+let comicTerror = false;                    //variável booleana que define se a comic está em sua forma de terror ou não
+let jumpscare = false;                      //variável booleana que define se o leitor já levou o jumpscare
+
 let iniciaAnimacaoPagina3 = false;
-let jumpscareFeito = false;
-let coletavel = 0;
+let coletavel = 0;                          //conta a quantidade de coletáveis adquiridos
+
+
+
+
+
+//Essas são as variáveis que definem os efeitos sonoros
+
 const ambiente = new Audio('Projeto/sounds/trilha_sonora.wav');
 ambiente.loop = true;
 ambiente.preload = 'auto';
@@ -19,6 +29,12 @@ const somFinal = new Audio('Projeto/sounds/cute_deer_sound_UWU.wav');
 somFinal.preload = 'auto';
 somFinal.volume = 0.6;
 let somFinalTocado = false;
+
+
+
+
+
+//Não faço ideia
 
 const overlayInicio = document.querySelector("#overlay-inicio");
 const btnIniciar = document.querySelector("#btn-iniciar");
@@ -74,24 +90,65 @@ function desbloquearScroll() {
     window.removeEventListener("keydown", prevenirScrollTeclado);
 }
 
+
+
+
+
 window.addEventListener("scroll", () => {
-    console.log("chegou ao final?:", chegouAoFinal);
-    console.log("chegou ao jumpscare?:", chegouAoJumpscare);
-    console.log("jumpscare Feito?:", jumpscareFeito);
 
-    if (!chegouNaSelecao) {
-        chegouNaSelecao =
-            window.innerHeight + window.scrollY >=
-            document.documentElement.scrollHeight * 0.90;
-    }
+    console.log(posicaoLeitor);
 
-    if (chegouNaSelecao) {
+    //Calculo para saber onde o Leitor está posicionado em % no comic
+    posicaoLeitor = (window.innerHeight + window.scrollY) / document.documentElement.scrollHeight;
+
+    //Aqui os itens receberão um outline se o leitor chegar ao final da leitura sem ter coletado todos eles
+    if (posicaoLeitor>=0.9 && coletavel < 3) {
         document.querySelectorAll(".coletavel").forEach((x) => {
             x.classList.add("bordaColetavel");
         })
     }
 
-    if (comicDestravada) {
+    //As interações dentro desses parenteses só acontecerão após a comic ser destravada
+    if (coletavel >= 3) {
+
+        //Parte do código responsável por localizar se a comic deve ou não ser transformada em terror
+        if (!comicTerror){
+            comicTerror = posicaoLeitor >= 0.9;
+        }
+
+        //Parte que efetivamente transforma a comic em terror
+        if(comicTerror){
+        document.querySelectorAll(".terror").forEach((x) => {
+        x.style.display = "block";
+        });
+        document.querySelectorAll(".padrao").forEach((x) => {
+        x.style.display = "none";
+        });
+        }
+    
+        //Responsável por localizar se o leitor está na tela da criatura
+        if (comicTerror && posicaoLeitor <= 0.52) {
+
+            //Parte responsável por travar a visão do leitor
+            if (!jumpscare) {
+                jumpscare = true;
+                bloquearScroll();
+                setTimeout(() => {
+                    desbloquearScroll();
+                }, 5000);
+            }
+
+            //Parte responsável pelo som da criatura
+            if (!somFinalTocado && audioLiberado) {
+                somFinalTocado = true;
+                const f = somFinal.cloneNode();
+                f.volume = 0.6;
+                f.play().catch(e => console.log('erro final', e));
+            }
+
+        }
+
+        //Esse conjunto realiza a animação de chocalho da página 3 (está com erro)
         if (
             window.innerHeight + window.scrollY >=
             document.documentElement.scrollHeight * 0.83 &&
@@ -124,98 +181,40 @@ window.addEventListener("scroll", () => {
                 })
             }, 2300);
         }
-
-        if (!chegouAoFinal) {
-            const porcent = window.innerWidth < 800 ? 0.98 : 0.95
-            console.log(porcent)
-            chegouAoFinal =
-                window.innerHeight + window.scrollY >=
-                document.documentElement.scrollHeight * porcent;
-        }
-
-        if (!chegouAoJumpscare && comicDestravada && chegouAoFinal) {
-            chegouAoJumpscare =
-                window.innerHeight + window.scrollY <=
-                document.documentElement.scrollHeight * 0.55;
-        }
-
-        if (chegouAoFinal && comicDestravada) {
-
-            if (chegouAoJumpscare && !jumpscareFeito) {
-                jumpscareFeito = true;
-                bloquearScroll();
-                setTimeout(() => {
-                    desbloquearScroll();
-                }, 5000);
-            }
-
-            if (!somFinalTocado && audioLiberado) {
-                somFinalTocado = true;
-                const f = somFinal.cloneNode();
-                f.volume = 0.6;
-                f.play().catch(e => console.log('erro final', e));
-            }
-            document.querySelectorAll(".patrao").forEach((x) => {
-                x.style.display = "none";
-            });
-
-            document.querySelectorAll(".ocultDay").forEach((x) => {
-                x.style.display = "block";
-            });
-
-            document.querySelectorAll(".monstro").forEach((x) => {
-                if(monstroOculto){
-                x.style.display = "block";
-                }
-            });
-
-        }
     }
+
 });
 
+
+//Parte responsável pela coleta e desbloqueio da comic
 document.querySelectorAll(".coletavel").forEach((x) => {
     x.addEventListener("click", (e) => {
+        
+        //Parte responsável pelo audio de coleta
         if (ambiente.paused && audioLiberado) ambiente.play().catch(() => { });
         const s = itemColetado.cloneNode(); // permite coletas sobrepostas
         s.volume = 1, 5;
         s.play().catch(() => { });
+        
+        //Parte responsável pela coleta em si
         x.style.display = "none";
         coletavel += 1;
 
-        if (coletavel >= 3) {
-            comicDestravada = true;
-        }
-
-        if (comicDestravada) {
-            document.querySelectorAll(".locked").forEach((x) => {
-                x.style.display = "none";
-            });
-
-            document.querySelectorAll(".unlocked").forEach((x) => {
-                x.style.display = "block";
-            });
-
-            document.querySelectorAll(".patrão").forEach((x) => {
-                x.style.display = "block";
-            });
-        }
+        //Parte responsável por efetivamente destravar a comic
+        document.querySelectorAll(".padrao").forEach((x) => {
+        x.style.display = "block";
+        });
+        document.querySelectorAll(".desbloqueado").forEach((x) => {
+        x.style.display = "block";
+        });
+        document.querySelectorAll(".bloqueado").forEach((x) => {
+        x.style.display = "none";
+        });
     });
 });
 
-document.querySelectorAll(".oculto").forEach((x) => {
-    x.addEventListener("click", (y) => {
 
-        if(monstroOculto){
-        document.querySelectorAll(".oculto").forEach((z) => {
-            z.style.display = "none";
-            monstroOculto = false;
-            })
-        }
-    }
-    )
-})
-
-
+//Parte responsável pelo botão de visualizar repositórios (aparentemente está com erro)
 document.querySelector("#botao-menu").addEventListener("click", () => {
     document.querySelector("#botao-prototipos").classList.toggle("buttonLocked");
 });
