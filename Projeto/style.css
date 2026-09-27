@@ -114,12 +114,15 @@ img.fundo {
 
 @keyframes tropeco {
     0% {
-        transform: rotate(-4deg);
-    }
-    30% {
         transform: rotate(1deg);
     }
-    60% {
+    25% {
+        transform: rotate(-4deg);
+    }
+    50% {
+        transform: rotate(1deg);
+    }
+    75%{
         transform: rotate(-4deg);
     }
     100%{

@@ -152,11 +152,11 @@ window.addEventListener("scroll", () => {
         //Esse conjunto realiza a animação de chocalho da página 3 (está com erro)
         if (
             window.innerHeight + window.scrollY >=
-                document.documentElement.scrollHeight * 0.85 &&
+                document.documentElement.scrollHeight * 0.86 &&
             !iniciaAnimacaoPagina3
         ) {
             iniciaAnimacaoPagina3 = true;
-            
+
             const tropeco = document.querySelector("#tropeco");
             const chocalha = document.querySelector("#chocalha");
             const batida = document.querySelector("#batida");
