@@ -161,15 +161,15 @@ window.addEventListener("scroll", () => {
             const chocalha = document.querySelector("#chocalha");
             const batida = document.querySelector("#batida");
 
-            tropeco.style.animation = "tropeco 2s ease-in-out 1";
+            tropeco.style.animation = "tropeco 2s ease-in-out 2";
 
             setTimeout(() => {
                 chocalha.style.animation = "chocalhar .5s ease-in-out 5";
-            }, 2500);
+            }, 4000);
 
             setTimeout(() => {
                 batida.style.animation = "batida .5s ease-in-out 5";
-            }, 5000);
+            }, 6500);
         }
     }
 });
