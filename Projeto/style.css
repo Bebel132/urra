@@ -79,30 +79,100 @@ img.fundo {
 
 #Gas {
     aspect-ratio: 1 / 1;
-    width: 40%;
     height: auto;
+    width: 40%;
     left: 57.3%;
     top: 67.65%;
 }
 
 #Lanterna {
     aspect-ratio: 1 / 1;
-    width: 22.5%;
     height: auto;
+    width: 22.5%;
     left: 12%;
     top: 68%;
 }
 
 #Mapa {
     aspect-ratio: 1 / 1;
-    width: 17.5%;
     height: auto;
+    width: 17.5%;
     left: 28%;
     top: 70.75%;
 }
 
-#maquinaAgricola {
-    transition: width 1s ease-in-out;
+#tropeco {
+    position: absolute;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    left: 17.5%;
+    top: 53.5%;
+    transform-origin: bottom center;
+    transform: rotate(1deg);
+    z-index: 2;
+}
+
+@keyframes tropeco {
+    0% {
+        transform: rotate(1deg);
+    }
+    25% {
+        transform: rotate(-4deg);
+    }
+    50% {
+        transform: rotate(1deg);
+    }
+    75%{
+        transform: rotate(-4deg);
+    }
+    100%{
+        transform: rotate(1deg);
+    }
+}
+
+#chocalha {
+    position: absolute;
+    aspect-ratio: 1 / 1.2;
+    height: auto;
+    left: 56.5%;
+    top: 54.0%;
+    transform: rotate(0deg);
+    z-index: 3;
+}
+
+@keyframes chocalhar {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(2deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+#batida {
+    position: absolute;
+    aspect-ratio: 2 / 1;
+    height: auto;
+    height: auto;
+    left: 11.5%;
+    top: 60.7%;
+    transform: scale(1);
+    z-index: 1;
+}
+
+@keyframes batida {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.04);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 #overlay-inicio {
