@@ -113,7 +113,7 @@ window.addEventListener("scroll", () => {
     }
 
     //As interações dentro desses parenteses só acontecerão após a comic ser destravada
-    if (coletavel >= 3) {
+    if (coletavel == 3) { 
         //Parte do código responsável por localizar se a comic deve ou não ser transformada em terror
         if (!comicTerror) {
             comicTerror = posicaoLeitor >= 0.9;
@@ -196,18 +196,20 @@ document.querySelectorAll(".coletavel").forEach((x) => {
 
         //Parte responsável pela coleta em si
         x.style.display = "none";
-        coletavel += 1;
+        coletavel++;
 
-        //Parte responsável por efetivamente destravar a comic
-        document.querySelectorAll(".padrao").forEach((x) => {
-            x.style.display = "block";
-        });
-        document.querySelectorAll(".desbloqueado").forEach((x) => {
-            x.style.display = "block";
-        });
-        document.querySelectorAll(".bloqueado").forEach((x) => {
-            x.style.display = "none";
-        });
+        if (coletavel == 3) {
+            //Parte responsável por efetivamente destravar a comic
+            document.querySelectorAll(".padrao").forEach((x) => {
+                x.style.display = "block";
+            });
+            document.querySelectorAll(".desbloqueado").forEach((x) => {
+                x.style.display = "block";
+            });
+            document.querySelectorAll(".bloqueado").forEach((x) => {
+                x.style.display = "none";
+            });
+        }
     });
 });
 
