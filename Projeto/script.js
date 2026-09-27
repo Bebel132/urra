@@ -127,6 +127,14 @@ window.addEventListener("scroll", () => {
             document.querySelectorAll(".padrao").forEach((x) => {
                 x.style.display = "none";
             });
+
+            //Parte responsável pelo som da criatura
+            if (!somFinalTocado && audioLiberado) {
+                somFinalTocado = true;
+                const f = somFinal.cloneNode();
+                f.volume = 0.6;
+                f.play().catch((e) => console.log("erro final", e));
+            }
         }
 
         //Responsável por localizar se o leitor está na tela da criatura
@@ -138,14 +146,6 @@ window.addEventListener("scroll", () => {
                 setTimeout(() => {
                     desbloquearScroll();
                 }, 5000);
-            }
-
-            //Parte responsável pelo som da criatura
-            if (!somFinalTocado && audioLiberado) {
-                somFinalTocado = true;
-                const f = somFinal.cloneNode();
-                f.volume = 0.6;
-                f.play().catch((e) => console.log("erro final", e));
             }
         }
 

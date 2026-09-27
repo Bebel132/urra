@@ -37,7 +37,8 @@ img.fundo {
 
 .terror,
 .padrao,
-.desbloqueado {
+.desbloqueado,
+.buttonLocked {
     display: none;
 }
 
