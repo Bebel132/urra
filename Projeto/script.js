@@ -127,6 +127,14 @@ window.addEventListener("scroll", () => {
             document.querySelectorAll(".padrao").forEach((x) => {
                 x.style.display = "none";
             });
+
+            //Parte responsável pelo som da criatura
+            if (!somFinalTocado && audioLiberado) {
+                somFinalTocado = true;
+                const f = somFinal.cloneNode();
+                f.volume = 0.6;
+                f.play().catch((e) => console.log("erro final", e));
+            }
         }
 
         //Responsável por localizar se o leitor está na tela da criatura
@@ -138,14 +146,6 @@ window.addEventListener("scroll", () => {
                 setTimeout(() => {
                     desbloquearScroll();
                 }, 5000);
-            }
-
-            //Parte responsável pelo som da criatura
-            if (!somFinalTocado && audioLiberado) {
-                somFinalTocado = true;
-                const f = somFinal.cloneNode();
-                f.volume = 0.6;
-                f.play().catch((e) => console.log("erro final", e));
             }
         }
 
@@ -161,15 +161,15 @@ window.addEventListener("scroll", () => {
             const chocalha = document.querySelector("#chocalha");
             const batida = document.querySelector("#batida");
 
-            tropeco.style.animation = "tropeco 2s ease-in-out 1";
+            tropeco.style.animation = "tropeco 2s ease-in-out 2";
 
             setTimeout(() => {
                 chocalha.style.animation = "chocalhar .5s ease-in-out 5";
-            }, 2500);
+            }, 4000);
 
             setTimeout(() => {
                 batida.style.animation = "batida .5s ease-in-out 5";
-            }, 5000);
+            }, 6500);
         }
     }
 });
