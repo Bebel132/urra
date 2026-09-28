@@ -1,4 +1,5 @@
-import { ambiente } from "./overlay.js";
+import { Ambiente } from "./overlay.js";
+import { ColetaItens } from '../sons.js';
 
 let qtnColetaveis = 0; //conta a quantidade de coletáveis adquiridos
 
@@ -10,10 +11,8 @@ function initColetaveis() {
     document.querySelectorAll(".coletavel").forEach((x) => {
         x.addEventListener("click", (e) => {
             //Parte responsável pelo audio de coleta
-            if (ambiente.paused) ambiente.play().catch(() => {});
-            const s = audioItemColetado.cloneNode(); // permite coletas sobrepostas
-            ((s.volume = 1), 5);
-            s.play().catch(() => {});
+            if (Ambiente.paused) Ambiente();
+            ColetaItens();
 
             //Parte responsável pela coleta em si
             x.style.display = "none";

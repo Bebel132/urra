@@ -25,32 +25,32 @@ susto.volume = 0.3;
 
 
 export function Ambiente() {
-    ambiente.play().catch(() => { });
+    return ambiente.play().catch(() => { });
 }
 
 export function ColetaItens() {
-    coleta.cloneNode().play().catch(() => { });
+    return coleta.cloneNode().play().catch(() => { });
 }
 
 export function Lanterna() {
-    lanterna.cloneNode().play().catch(() => { });
+    return lanterna.cloneNode().play().catch(() => { });
 }
 
 export function Tropeco() {
-    tropeco.cloneNode().play().catch(() => { });
+    return tropeco.cloneNode().play().catch(() => { });
 }
 
 export function Batida() {
-    batida.cloneNode().play().catch(() => { });
+    return batida.cloneNode().play().catch(() => { });
 }
 
 export function Alavanca() {
-    alavanca.cloneNode().play().catch(() => { });
+    return alavanca.cloneNode().play().catch(() => { });
 }
 export function FinalHistoria() {
-    final.cloneNode().play().catch(() => { });
+    return final.cloneNode().play().catch(() => { });
 }
 
 export function Susto() {
-    susto.cloneNode().play().catch(() => { });
+    return susto.cloneNode().play().catch(() => { });
 }

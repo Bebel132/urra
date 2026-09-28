@@ -1,4 +1,5 @@
 import { qtnColetaveis } from "./coletaveis.js";
+import { } from '../sons.js';
 
 let posicaoLeitor = 0; //calcula a posição do leitor
 
