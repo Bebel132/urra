@@ -5,9 +5,11 @@ let posicaoLeitor = 0; //calcula a posição do leitor
 let comicTerror = false; //variável booleana que define se a comic está em sua forma de terror ou não
 
 let iniciaAnimacaoPagina3 = false;
+let iniciaAnimacaoPagina2 = false;
 
 const posicaoEventosDeScroll = {
     pg1: 0.9, //coloca borda nos itens coletáveis
+    pg2: 0.58, //mostra a animação do balao de surpresa da página 2
     pg3: 0.98, //transforma a comic em terror
     pg3Animacoes: 0.86, //inicia as animações da página 3
 }
@@ -46,6 +48,7 @@ function initEventosDeScroll() {
     
             //Parte que efetivamente transforma a comic em terror
             if (comicTerror) {
+                document.querySelector("#balaoSurpresa").style.display = "block";
                 document.querySelectorAll(".terror").forEach((x) => {
                     x.style.display = "block";
                 });
@@ -64,8 +67,7 @@ function initEventosDeScroll() {
     
             //Esse conjunto realiza a animação de chocalho da página 3 (está com erro)
             if (
-                window.innerHeight + window.scrollY >=
-                    document.documentElement.scrollHeight * posicaoEventosDeScroll.pg3Animacoes &&
+                posicaoLeitor >= posicaoEventosDeScroll.pg3Animacoes &&
                 !iniciaAnimacaoPagina3
             ) {
                 iniciaAnimacaoPagina3 = true;
@@ -84,6 +86,16 @@ function initEventosDeScroll() {
                     batida.style.animation = "batida .5s ease-in-out 5";
                 }, 6500);
             }
+
+            if (
+                posicaoLeitor <= posicaoEventosDeScroll.pg2 
+                && !iniciaAnimacaoPagina2
+                && comicTerror
+            ) {
+                console.log("heklhsakjl")
+                iniciaAnimacaoPagina2 = true;
+                document.querySelector("#balaoSurpresa").style.animation = "surpresa 0.5s ease-out 4";
+            } 
         }
     });
 }
