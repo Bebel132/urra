@@ -251,3 +251,24 @@ img.fundo {
 body.travado-inicio {
     overflow: hidden;
 }
+
+.imagensJumpscare {
+    display: none;
+    margin: auto;
+    max-width: 690px;
+    width: 100%;
+    height: auto;
+    color: #fff;
+}
+
+.pisca {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.creditos {
+    height: 1015px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 1s;
+}
