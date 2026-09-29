@@ -1,7 +1,5 @@
-const ambiente = new Audio("Projeto/sounds/trilha_sonora.wav");
-ambiente.loop = true;
-ambiente.preload = "auto";
-ambiente.volume = 0.3;
+import { Ambiente } from '../sons.js';
+
 
 function esconderOverlayInicio() {
     document.querySelector("#overlay-inicio").classList.add("oculto");
@@ -12,12 +10,11 @@ function initOverlay() {
     document.body.classList.add("travado-inicio");
 
     document.querySelector("#btn-iniciar").addEventListener("click", () => {
-        ambiente
-            .play()
+        Ambiente()
             .then(() => {
                 audioLiberado = true;
             })
-            .catch(() => {})
+            .catch(() => { })
             .finally(() => {
                 esconderOverlayInicio();
             });
@@ -26,4 +23,4 @@ function initOverlay() {
 
 }
 
-export { ambiente, initOverlay };
+export { Ambiente, initOverlay };
