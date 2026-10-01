@@ -1,5 +1,5 @@
 import { qtnColetaveis } from "./coletaveis.js";
-import { FinalHistoria,Tropeco, Alavanca, Batida, Susto} from '../sons.js';
+import { FinalHistoria,Tropeco, Alavanca, Batida, Susto, Lanterna, Eita, Morreu, PausarAmbiente} from '../sons.js';
 
 let posicaoLeitor = 0; //calcula a posição do leitor
 
@@ -13,6 +13,7 @@ const posicaoEventosDeScroll = {
     pg2: 0.58, //mostra a animação do balao de surpresa da página 2
     pg2_bichao: 0.52, //mostra o bichão da página 2
     pg3: 0.98, //transforma a comic em terror
+    pg3_patas: 0.995, //mostra as patas da página 3
     pg3Animacoes: 0.86, //inicia as animações da página 3
 }
 
@@ -70,17 +71,17 @@ function initEventosDeScroll() {
                 const chocalha = document.querySelector("#chocalha");
                 const batida = document.querySelector("#batida");
                 Tropeco()
-                tropeco.style.animation = "tropeco 2s ease-in-out 2";
+                tropeco.style.animation = "tropeco 1s ease-in-out 1";
 
                 setTimeout(() => {
                     Alavanca()
-                    chocalha.style.animation = "chocalhar .5s ease-in-out 5";
-                }, 4000);
+                    chocalha.style.animation = "chocalhar .5s ease-in-out 4";
+                }, 1200);
 
                 setTimeout(() => {
                     Batida()
                     batida.style.animation = "batida .5s ease-in-out 5";
-                }, 6500);
+                }, 4000);
             }
 
             if (
@@ -100,6 +101,7 @@ function initEventosDeScroll() {
                 document.querySelectorAll(".cena").forEach(x => {
                     x.style.display = "none";
                 })
+                PausarAmbiente();
 
                 const imagensJumpscare = document.querySelectorAll(".imagensJumpscare");
 
@@ -115,19 +117,24 @@ function initEventosDeScroll() {
                         elemento.style.display = "none";
 
                         if (proximaImagemDoJumpscare) {
-                            const eUltimaImagem = indice + 1 === imagensJumpscare.length - 1;
+                            if (indice + 1 === imagensJumpscare.length - 1) {
+                                proximaImagemDoJumpscare.style.display = "flex";
+                                proximaImagemDoJumpscare.style.filter = "none";
+                                proximaImagemDoJumpscare.style.backgroundColor = "#ff0000";
+                            } else {
+                                proximaImagemDoJumpscare.style.display = "block";
+                                proximaImagemDoJumpscare.style.filter = "brightness(0) invert(1)";
+                                proximaImagemDoJumpscare.style.backgroundColor = "transparent";
+                                Lanterna();
+                            }
 
-                            proximaImagemDoJumpscare.style.display = eUltimaImagem
-                                ? "flex"
-                                : "block";
-
-                            proximaImagemDoJumpscare.style.filter = eUltimaImagem
-                                ? "none"
-                                : "brightness(0) invert(1)";
-
-                            proximaImagemDoJumpscare.style.backgroundColor = eUltimaImagem
-                                ? "#ff0000"
-                                : "transparent";
+                            if (indice + 1 === imagensJumpscare.length - 2) {
+                                Eita();
+                                setTimeout(() => {
+                                    proximaImagemDoJumpscare.click();
+                                    Morreu();
+                                }, 1000);
+                            }
 
                             document.body.classList.add("pisca");
 
@@ -140,6 +147,33 @@ function initEventosDeScroll() {
                         }
                     });
                 });
+            }
+
+            if (
+                posicaoLeitor <= posicaoEventosDeScroll.pg3_patas
+                && comicTerror
+            ) {
+                const patas = document.querySelectorAll(".patas");
+
+                switch (true) {
+                    case posicaoLeitor < 0.95:
+                        patas[4].classList.add("ativo")
+                        break;
+                    case posicaoLeitor < 0.96:
+                        patas[3].classList.add("ativo")
+                        break;
+                    case posicaoLeitor < 0.97:
+                        patas[2].classList.add("ativo")
+                        break;
+                    case posicaoLeitor < 0.98:
+                        patas[1].classList.add("ativo")
+                        break;
+                    default:
+                        setTimeout(() => {
+                            patas[0].classList.add("ativo")
+                        }, 1000);
+                        break;
+                }
             }
         }
     });

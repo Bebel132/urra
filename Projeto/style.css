@@ -272,3 +272,27 @@ body.travado-inicio {
     flex-direction: column;
     transition: 1s;
 }
+
+.patas {
+    position: absolute;
+    width: fit-content;
+    max-width: 100%;
+    aspect-ratio: 685 / 4096;
+    top: 0;
+    display: none;
+    opacity: 0;
+}
+
+.patas.ativo {
+    display: block;
+    animation: suave 0.5s ease-in-out forwards;
+}
+
+@keyframes suave {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
